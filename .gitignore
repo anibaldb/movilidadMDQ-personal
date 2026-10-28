@@ -1,0 +1,18 @@
+# Repos propios (cada uno se actualiza con su propio git pull)
+frontend1/
+frontend2/
+movilidad-mdq/
+
+# Datos y secretos: no se suben
+backup-db/dumps/
+backup-db/*.sql
+backup-db/*.sql.gz
+backup-db/log.txt
+*.pem
+.env
+
+# Basura de Office / sistema
+~$*
+*.tmp
+Thumbs.db
+desktop.ini

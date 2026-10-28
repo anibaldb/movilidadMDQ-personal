@@ -1,0 +1,46 @@
+Issue Type,Summary,Description,Parent,Epic Name,Epic Link
+Epic,Configuración y Arquitectura Base,"Configuración inicial de Angular, ruteo, estilos globales, sesión JWT e integración con el backend.",,Configuración y Arquitectura Base,
+Epic,Autenticación y Cuenta de Usuario,"Login, registro, login con Google, recuperar contraseña, perfil y eliminar cuenta.",,Autenticación y Cuenta de Usuario,
+Epic,Búsqueda y Cálculo de Viaje,"Formulario de origen/destino, autocompletado, ubicación GPS y viaje frecuente.",,Búsqueda y Cálculo de Viaje,
+Epic,Comparador y Resultados,"Comparación de precios y tiempos entre Taxi, Uber y DiDi, con manejo de estados.",,Comparador y Resultados,
+Epic,Mapa / Integración Visual,Integración con Google Maps: marcadores de origen y destino y trazado de la ruta.,,Mapa / Integración Visual,
+Epic,Historial y Favoritos,Historial de viajes y direcciones favoritas.,,Historial y Favoritos,
+Epic,Estadísticas del Cliente,"Pantalla de estadísticas del usuario (transporte más elegido, ahorro, viajes).",,Estadísticas del Cliente,
+Epic,Navegación y Layout,"Header, menú desplegable y ruteo entre vistas; toggle claro/oscuro.",,Navegación y Layout,
+Epic,Panel de Administración,"Panel admin: tarifa, gestión de usuarios e informes.",,Panel de Administración,
+Epic,Backend: nuevos endpoints,Endpoints de backend que hay que crear para las pantallas nuevas.,,Backend: nuevos endpoints,
+Task,Setup inicial del proyecto Angular,"Iniciar proyecto con Angular CLI, RxJS, HttpClient y ruteo.",Configuración y Arquitectura Base,,Configuración y Arquitectura Base
+Task,Librería de UI y estilo global,"Angular Material/Tailwind. Identidad del diseño: fondo gris claro, cards redondeadas, botones negros mayúsculas, wordmark MovilidadMDQ, modo claro/oscuro.",Configuración y Arquitectura Base,,Configuración y Arquitectura Base
+Task,Servicio HTTP (ApiService) + modelos TS,"Servicios Angular (HttpClient) e interfaces TypeScript para los endpoints (usuarios, viajes, tarifas).",Configuración y Arquitectura Base,,Configuración y Arquitectura Base
+Task,Sesión JWT (interceptor),"Interceptor con Authorization Bearer, guardado de sesión y cierre automático al vencer el token.",Configuración y Arquitectura Base,,Configuración y Arquitectura Base
+Task,Guards de ruta,Rutas protegidas (requiere login) y ruta solo ADMIN según rol.,Configuración y Arquitectura Base,,Configuración y Arquitectura Base
+Task,Configuración de entornos,environment con URL del backend y API key de Google Maps.,Configuración y Arquitectura Base,,Configuración y Arquitectura Base
+Story,Iniciar sesión,"Como usuario quiero entrar con usuario/email y contraseña. POST /usuarios/login, guarda JWT. Validación y error claro.",Autenticación y Cuenta de Usuario,,Autenticación y Cuenta de Usuario
+Story,Login con Google,Botón que va a /oauth2/authorization/google y maneja el token de retorno.,Autenticación y Cuenta de Usuario,,Autenticación y Cuenta de Usuario
+Story,Crear cuenta,"Registro con nombre, email y contraseña. POST /usuarios/registro. Avisa si ya existe.",Autenticación y Cuenta de Usuario,,Autenticación y Cuenta de Usuario
+Story,Recuperar contraseña,Pantalla escribir mail para nueva contraseña. DEPENDE de endpoint nuevo (EPIC-10).,Autenticación y Cuenta de Usuario,,Autenticación y Cuenta de Usuario
+Story,Ver y editar perfil,"Editar nombre, email y contraseña. PUT /usuarios/{id}.",Autenticación y Cuenta de Usuario,,Autenticación y Cuenta de Usuario
+Story,Eliminar cuenta,DELETE /usuarios/{id} con confirmación.,Autenticación y Cuenta de Usuario,,Autenticación y Cuenta de Usuario
+Story,Formulario de origen y destino,Campos con validación (no vacíos) y botón CALCULAR. (Intercambiar A/B no está en el diseño: opcional.),Búsqueda y Cálculo de Viaje,,Búsqueda y Cálculo de Viaje
+Story,Autocompletado y ubicación actual,"Sugerencias mientras escribe (Google Places, MDQ) y usar ubicación GPS como origen.",Búsqueda y Cálculo de Viaje,,Búsqueda y Cálculo de Viaje
+Story,Viaje frecuente,Mostrar el viaje más repetido y repetirlo con un toque. GET /usuarios/{id}/viaje-frecuente.,Búsqueda y Cálculo de Viaje,,Búsqueda y Cálculo de Viaje
+Story,Tarjetas comparativas (Taxi/Uber/DiDi),"POST /viajes/calcular. Logo/color, precio ARS, tiempo y acción Elegir (deep link app o web).",Comparador y Resultados,,Comparador y Resultados
+Story,Manejo de estados (carga y errores),Spinner/skeleton mientras calcula y mensajes de error amigables si falla.,Comparador y Resultados,,Comparador y Resultados
+Story,(Opcional) Ordenar por más barato/más rápido,No está en el diseño actual. Indicador de más económico/más rápido y ordenamiento. Futuro.,Comparador y Resultados,,Comparador y Resultados
+Story,Mapa con ruta,Google Maps + Directions: marca A y B y traza la ruta. Respeta modo claro/oscuro.,Mapa / Integración Visual,,Mapa / Integración Visual
+Story,Historial de viajes,"Lista con fecha, distancia y precios; botones Repetir y Borrar. GET /usuarios/{id}/historial, DELETE .../{viajeId}.",Historial y Favoritos,,Historial y Favoritos
+Story,Marcar búsqueda favorita,Estrella para marcar/desmarcar un viaje. PUT /viajes/{id}/favorito.,Historial y Favoritos,,Historial y Favoritos
+Story,Direcciones favoritas,"Listar, renombrar (alias) y eliminar. GET/PUT/DELETE /viajes/direcciones-favoritas.",Historial y Favoritos,,Historial y Favoritos
+Story,Estadísticas del cliente,"Torta de transporte más elegido, total ahorrado y viajes realizados, filtro por fechas. DEPENDE de endpoint nuevo (EPIC-10).",Estadísticas del Cliente,,Estadísticas del Cliente
+Story,Menú desplegable,"Header Hola [usuario] + menú hamburguesa: Mi perfil, Mi historial, Mis direcciones favoritas, Mis estadísticas.",Navegación y Layout,,Navegación y Layout
+Task,Ruteo entre vistas,Configurar ruteo; item Admin visible solo con rol ADMIN.,Navegación y Layout,,Navegación y Layout
+Task,Toggle modo claro/oscuro,Alternar tema claro/oscuro en toda la app.,Navegación y Layout,,Navegación y Layout
+Story,Configuración de tarifa,"Ver y modificar bajada de bandera y ficha (día/noche) y metros por ficha, con valores actuales. GET + PUT /admin/tarifas/taxi.",Panel de Administración,,Panel de Administración
+Story,Gestión de usuarios,"Buscar por username/email, ver info y eliminar. GET /usuarios/buscar, DELETE /usuarios/{id}.",Panel de Administración,,Panel de Administración
+Story,Informe: usuarios registrados por mes,"Gráfico de usuarios por mes, filtro por año. DEPENDE de endpoint nuevo (EPIC-10).",Panel de Administración,,Panel de Administración
+Story,Informe: transporte más elegido,Torta filtrable por fechas. DEPENDE de endpoint nuevo (EPIC-10).,Panel de Administración,,Panel de Administración
+Story,(A confirmar) Auditoría global de búsquedas,Filtros usuario/origen/destino/fecha/favorito. GET /viajes/admin/auditoria. Confirmar si va en el diseño nuevo.,Panel de Administración,,Panel de Administración
+Task,[Backend] Recuperación de contraseña,POST /usuarios/recuperar-password: nueva contraseña por mail. Incluye envío de email (SMTP). Habilita pantalla 3.,Backend: nuevos endpoints,,Backend: nuevos endpoints
+Task,[Backend] Estadísticas del cliente,"GET /usuarios/{id}/estadisticas?desde&hasta: conteo por tipo, total ahorrado y cantidad de viajes. Sobre viajes guardados. Habilita pantalla 8.",Backend: nuevos endpoints,,Backend: nuevos endpoints
+Task,[Backend] Informe usuarios registrados por mes,GET /admin/estadisticas/usuarios-por-mes?anio. Requiere fecha de alta en Usuario. Habilita pantalla 13.,Backend: nuevos endpoints,,Backend: nuevos endpoints
+Task,[Backend] Informe transporte más elegido (admin),GET /admin/estadisticas/transporte-elegido?desde&hasta. Derivable del campo tipoElegido de la auditoría. Habilita pantalla 14.,Backend: nuevos endpoints,,Backend: nuevos endpoints
