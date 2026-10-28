@@ -16,3 +16,7 @@ backup-db/log.txt
 *.tmp
 Thumbs.db
 desktop.ini
+
+# Sincronizacion automatica
+sync.log
+SYNC-CONFLICTO.txt
